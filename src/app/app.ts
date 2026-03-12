@@ -11,13 +11,9 @@ import { FormularioComponent } from './formulario/formulario';
   styleUrls: ['./app.css']
 })
 export class App {
-  titulo = 'CRUD de Productos';
-  
-  // Lista de productos
   productos = [
-    { id: 1, nombre: 'Producto 1', descripcion: 'Descripción 1', precio: 100 },
-    { id: 2, nombre: 'Producto 2', descripcion: 'Descripción 2', precio: 200 },
-    { id: 3, nombre: 'Producto 3', descripcion: 'Descripción 3', precio: 300 }
+    { id: 1, nombre: 'Producto 1', descripcion: 'Descripción 1' },
+    { id: 2, nombre: 'Producto 2', descripcion: 'Descripción 2' }
   ];
 
   productoParaEditar: any = null;
@@ -30,13 +26,14 @@ export class App {
         this.productos[index] = producto;
       }
     } else {
-      // Agregar nuevo
+      // Crear nuevo
       const nuevoId = this.productos.length > 0 
         ? Math.max(...this.productos.map(p => p.id)) + 1 
         : 1;
       this.productos.push({
         id: nuevoId,
-        ...producto
+        nombre: producto.nombre,
+        descripcion: producto.descripcion
       });
     }
     this.productoParaEditar = null;
@@ -47,7 +44,7 @@ export class App {
   }
 
   eliminarProducto(id: number) {
-    if (confirm('¿Estás seguro de eliminar este producto?')) {
+    if (confirm('¿Eliminar?')) {
       this.productos = this.productos.filter(p => p.id !== id);
     }
   }

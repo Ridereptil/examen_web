@@ -1,45 +1,54 @@
-<div class="container">
-  <h1>{{ titulo }}</h1>
-  
-  <div style="display: flex; gap: 20px;">
-    <!-- Formulario -->
-    <div style="width: 300px;">
-      <app-formulario 
-        [productoEdit]="productoParaEditar"
-        (guardarProducto)="guardarProducto($event)"
-        (cancelarEdicion)="cancelarEdicion()">
-      </app-formulario>
+<div class="container mt-4">
+  <div class="row">
+    <!-- Formulario - Columna izquierda -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Nuevo</h5>
+        </div>
+        <div class="card-body">
+          <app-formulario 
+            [productoEdit]="productoParaEditar"
+            (guardarProducto)="guardarProducto($event)"
+            (cancelarEdicion)="cancelarEdicion()">
+          </app-formulario>
+        </div>
+      </div>
     </div>
     
-    <!-- Tabla -->
-    <div style="flex: 1;">
-      <h3>Lista de Productos</h3>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Precio</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let producto of productos">
-            <td>{{ producto.id }}</td>
-            <td>{{ producto.nombre }}</td>
-            <td>{{ producto.descripcion }}</td>
-            <td>${{ producto.precio }}</td>
-            <td>
-              <button class="btn" (click)="editarProducto(producto)">Editar</button>
-              <button class="btn" (click)="eliminarProducto(producto.id)">Eliminar</button>
-            </td>
-          </tr>
-          <tr *ngIf="productos.length === 0">
-            <td colspan="5">No hay productos</td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- Tabla - Columna derecha -->
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Lista</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-hover">
+            <thead class="table-light">
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of productos">
+                <td>{{ p.id }}</td>
+                <td>{{ p.nombre }}</td>
+                <td>{{ p.descripcion }}</td>
+                <td>
+                  <button class="btn btn-sm btn-primary me-1" (click)="editarProducto(p)">Editar</button>
+                  <button class="btn btn-sm btn-danger" (click)="eliminarProducto(p.id)">Eliminar</button>
+                </td>
+              </tr>
+              <tr *ngIf="productos.length === 0">
+                <td colspan="4" class="text-center">No hay productos</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>

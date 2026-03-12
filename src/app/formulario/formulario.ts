@@ -14,13 +14,7 @@ export class FormularioComponent {
   @Output() guardarProducto = new EventEmitter<any>();
   @Output() cancelarEdicion = new EventEmitter<void>();
 
-  producto = {
-    id: 0,
-    nombre: '',
-    descripcion: '',
-    precio: 0
-  };
-
+  producto = { id: 0, nombre: '', descripcion: '' };
   esEdicion = false;
 
   ngOnChanges(changes: SimpleChanges) {
@@ -31,30 +25,19 @@ export class FormularioComponent {
   }
 
   onSubmit() {
-    if (this.validarFormulario()) {
+    if (this.producto.nombre && this.producto.descripcion) {
       this.guardarProducto.emit(this.producto);
-      this.resetFormulario();
+      this.reset();
     }
   }
 
   cancelar() {
-    this.resetFormulario();
+    this.reset();
     this.cancelarEdicion.emit();
   }
 
-  resetFormulario() {
-    this.producto = {
-      id: 0,
-      nombre: '',
-      descripcion: '',
-      precio: 0
-    };
+  reset() {
+    this.producto = { id: 0, nombre: '', descripcion: '' };
     this.esEdicion = false;
-  }
-
-  validarFormulario(): boolean {
-    return this.producto.nombre?.trim() !== '' && 
-           this.producto.descripcion?.trim() !== '' && 
-           this.producto.precio > 0;
   }
 }
