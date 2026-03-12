@@ -1,0 +1,56 @@
+.card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  background: #fafafa;
+}
+
+.card-header {
+  margin-bottom: 15px;
+}
+
+.card-header h5 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #0056b3;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.text-danger {
+  color: red;
+  font-size: 12px;
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
